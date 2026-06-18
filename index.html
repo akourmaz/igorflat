@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Подбор для Игоря — IZIHome</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+<script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<style>
+  :root {
+    --bg: #faf8f3;
+    --bg-alt: #ffffff;
+    --ink: #1a1815;
+    --ink-soft: #6b665e;
+    --ink-faint: #a8a298;
+    --hairline: #d8d3c8;
+    --hairline-soft: #ebe6d9;
+    --gold: #8a6f45;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    font-size: 15px;
+  }
+  .container { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
+
+  /* === BRAND BAR === */
+  .brand-bar {
+    border-bottom: 1px solid var(--hairline);
+    padding: 22px 0 20px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .brand {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .brand-mark {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 500;
+    font-size: 24px;
+    letter-spacing: 0.01em;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .brand-mark .izi { font-style: italic; }
+  .brand-mark .rent { font-weight: 400; }
+  .brand-tag {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+  .brand-meta {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+
+  /* === HEADER === */
+  header.hero { padding: 88px 0 64px; }
+  .hero-eyebrow {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    color: var(--gold);
+    font-weight: 500;
+    margin: 0 0 24px;
+  }
+  h1 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 300;
+    font-size: 64px;
+    line-height: 1.05;
+    margin: 0;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+  }
+  h1 .italic { font-style: italic; font-weight: 400; }
+  .hero-sub {
+    margin: 14px 0 0;
+    font-size: 13px;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-weight: 500;
+  }
+  .lead {
+    margin: 56px 0 0;
+    font-size: 17px;
+    color: var(--ink);
+    line-height: 1.65;
+    max-width: 680px;
+    font-weight: 400;
+  }
+  .lead strong { font-weight: 500; color: var(--ink); }
+
+  /* === CRITERIA === */
+  .criteria {
+    margin-top: 48px;
+    padding-top: 28px;
+    border-top: 1px solid var(--hairline);
+    max-width: 680px;
+  }
+  .section-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--ink-soft);
+    font-weight: 500;
+    margin: 0 0 18px;
+  }
+  .criteria ul {
+    margin: 0; padding: 0; list-style: none;
+    display: grid; gap: 10px;
+    font-size: 16px; color: var(--ink);
+    font-weight: 400;
+    line-height: 1.5;
+  }
+  .criteria li {
+    padding-left: 22px;
+    position: relative;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 19px;
+    font-weight: 400;
+  }
+  .criteria li::before {
+    content: ''; position: absolute;
+    left: 0; top: 14px;
+    width: 12px; height: 1px;
+    background: var(--gold);
+  }
+
+  /* === CARDS === */
+  .cards-section {
+    margin-top: 80px;
+    padding-top: 32px;
+    border-top: 1px solid var(--hairline);
+  }
+  .cards-heading {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .cards-heading h2 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 400;
+    font-size: 28px;
+    margin: 0;
+    color: var(--ink);
+    letter-spacing: 0;
+  }
+  .cards-heading .count {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+  .cards { display: flex; flex-direction: column; gap: 64px; }
+  .card {
+    background: var(--bg-alt);
+    border: 1px solid var(--hairline);
+    border-radius: 2px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 480px 1fr;
+  }
+  @media (max-width: 860px) {
+    .card { grid-template-columns: 1fr; }
+  }
+
+  /* === ФОТО-КАРУСЕЛЬ === */
+  .carousel {
+    position: relative;
+    height: 100%;
+    min-height: 420px;
+    background: #1a1815;
+    overflow: hidden;
+    cursor: zoom-in;
+  }
+  @media (max-width: 860px) { .carousel { min-height: 320px; height: 320px; } }
+  .carousel .track {
+    display: flex;
+    height: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .carousel .track::-webkit-scrollbar { display: none; }
+  .carousel .slide {
+    flex: 0 0 100%;
+    height: 100%;
+    scroll-snap-align: start;
+    background: #1a1815 no-repeat center / cover;
+  }
+  .carousel .counter {
+    position: absolute;
+    bottom: 16px; right: 16px;
+    background: rgba(0,0,0,0.55);
+    backdrop-filter: blur(4px);
+    color: #fff;
+    font-size: 10px;
+    padding: 6px 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 500;
+    pointer-events: none;
+  }
+  .carousel .nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px; height: 40px;
+    background: rgba(255,255,255,0.88);
+    border: none;
+    color: var(--ink);
+    font-size: 16px;
+    font-weight: 300;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s;
+  }
+  .carousel .nav:hover { background: #fff; }
+  .carousel .nav.prev { left: 0; }
+  .carousel .nav.next { right: 0; }
+  .carousel .dots {
+    position: absolute;
+    bottom: 18px; left: 18px;
+    display: flex; gap: 6px;
+    pointer-events: none;
+  }
+  .carousel .dot {
+    width: 18px; height: 1px;
+    background: rgba(255,255,255,0.4);
+    transition: background 0.2s;
+  }
+  .carousel .dot.active { background: #fff; }
+
+  /* === LIGHTBOX === */
+  .lb-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.92);
+    display: none;
+    z-index: 999;
+    align-items: center;
+    justify-content: center;
+  }
+  .lb-overlay.open { display: flex; }
+  .lb-img {
+    max-width: 92vw;
+    max-height: 90vh;
+    object-fit: contain;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+  .lb-close {
+    position: absolute;
+    top: 18px; right: 22px;
+    background: rgba(255,255,255,0.12);
+    border: none; color: #fff;
+    font-size: 22px;
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  .lb-close:hover { background: rgba(255,255,255,0.22); }
+  .lb-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.12);
+    border: none; color: #fff;
+    width: 50px; height: 50px;
+    border-radius: 50%;
+    font-size: 22px;
+    cursor: pointer;
+  }
+  .lb-nav:hover { background: rgba(255,255,255,0.22); }
+  .lb-nav.prev { left: 18px; }
+  .lb-nav.next { right: 18px; }
+  .lb-counter {
+    position: absolute;
+    bottom: 22px; left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    font-size: 13px;
+    background: rgba(255,255,255,0.12);
+    padding: 4px 12px;
+    border-radius: 14px;
+  }
+
+  /* === INFO === */
+  .info {
+    padding: 44px 48px 44px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  @media (max-width: 860px) { .info { padding: 32px 28px; gap: 24px; } }
+
+  .card-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .numeral {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 52px;
+    font-weight: 300;
+    color: var(--ink-faint);
+    line-height: 0.9;
+    letter-spacing: 0;
+  }
+  .price-block { text-align: right; }
+  .price {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 34px;
+    font-weight: 400;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+    line-height: 1;
+  }
+  .price-per-m {
+    margin-top: 6px;
+    font-size: 11px;
+    color: var(--ink-soft);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+  }
+
+  .specs-table {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-top: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .spec-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 12px 0;
+    font-size: 14px;
+    gap: 12px;
+  }
+  .spec-row:nth-child(odd) { padding-right: 24px; border-right: 1px solid var(--hairline-soft); }
+  .spec-row:nth-child(even) { padding-left: 24px; }
+  @media (max-width: 860px) {
+    .specs-table { grid-template-columns: 1fr; }
+    .spec-row:nth-child(odd) { border-right: none; border-bottom: 1px solid var(--hairline-soft); padding-right: 0; }
+    .spec-row:nth-child(even) { padding-left: 0; }
+  }
+  .spec-row .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+  .spec-row .value {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 19px;
+    font-weight: 400;
+    color: var(--ink);
+  }
+
+  .title-row {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 21px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.35;
+  }
+
+  .block-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    color: var(--gold);
+    font-weight: 500;
+    margin: 0 0 10px;
+  }
+  .highlights {
+    font-size: 15px;
+    color: var(--ink);
+    line-height: 1.6;
+    font-weight: 400;
+  }
+  .card-map-block { margin-top: 18px; }
+  .card-map {
+    width: 100%;
+    height: 200px;
+    border: 1px solid var(--hairline);
+    background: var(--bg-alt);
+    margin-top: 4px;
+  }
+  .card-addr {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: var(--ink-soft);
+    margin: 8px 2px 0;
+    line-height: 1.5;
+  }
+  .card-addr .approx { font-style: italic; opacity: 0.8; }
+  .source-link {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(138,111,69,0.18);
+  }
+  .source-link a {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--gold);
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px solid rgba(138,111,69,0.35);
+    padding-bottom: 2px;
+    transition: opacity 0.2s ease;
+  }
+  .source-link a:hover { opacity: 0.65; }
+  .desc-block { }
+  .desc {
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin: 0;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    max-height: 220px;
+    overflow-y: auto;
+    font-weight: 400;
+  }
+  .desc.empty { color: var(--ink-faint); font-style: italic; }
+  .desc[data-lang="ka"]::before {
+    content: 'на грузинском';
+    display: block;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-faint);
+    margin-bottom: 8px;
+  }
+  .build-year {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+
+  /* === FINAL CTA === */
+  .closing {
+    margin: 96px 0 64px;
+    padding: 80px 32px;
+    border-top: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
+    text-align: center;
+  }
+  .closing-eyebrow {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    color: var(--gold);
+    font-weight: 500;
+    margin: 0 0 16px;
+  }
+  .closing h2 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 300;
+    font-size: 44px;
+    line-height: 1.15;
+    margin: 0 0 14px;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+  }
+  .closing h2 .italic { font-style: italic; font-weight: 400; }
+  .closing-sub {
+    margin: 0 auto 36px;
+    max-width: 520px;
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .wa-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 32px;
+    background: var(--ink);
+    color: #faf8f3;
+    text-decoration: none;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-weight: 500;
+    transition: background 0.2s;
+  }
+  .wa-btn:hover { background: #2a2620; }
+  .wa-btn .arrow { font-size: 14px; }
+  .closing-signature {
+    margin-top: 36px;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--ink-soft);
+  }
+
+  footer {
+    padding: 28px 0 36px;
+    border-top: 1px solid var(--hairline-soft);
+    font-size: 11px;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    text-align: center;
+  }
+.map-section { margin: clamp(40px, 8vw, 72px) 0; }
+.map-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 16px; gap: 16px; flex-wrap: wrap; }
+.map-title { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 400; font-style: italic; font-size: clamp(24px, 4vw, 32px); color: var(--ink); margin: 0; }
+.map-meta { font-family: 'Inter', sans-serif; font-size: 11px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.18em; }
+.map-canvas { width: 100%; height: clamp(360px, 50vw, 520px); border: 1px solid var(--hairline); background: var(--bg-alt); }
+.map-note { font-family: 'Inter', sans-serif; font-size: 12px; color: var(--ink-soft); line-height: 1.55; margin: 12px 2px 0; max-width: 720px; }
+.map-pin { width: 36px; height: 36px; border-radius: 50%; background: var(--bg); border: 1px solid var(--gold); color: var(--gold); font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 14px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 14px rgba(40,30,15,0.18); cursor: pointer; transition: transform 0.18s ease; }
+.map-pin:hover, .map-pin:focus { transform: translateY(-2px); background: var(--gold); color: var(--bg); outline: none; }
+.map-pin.tight { font-size: 11px; }
+.leaflet-popup-content-wrapper { background: var(--bg-alt); border: 1px solid var(--hairline); border-radius: 0; box-shadow: 0 6px 28px rgba(40,30,15,0.18); padding: 0; }
+.leaflet-popup-tip { background: var(--bg-alt); border: 1px solid var(--hairline); }
+.leaflet-popup-content { margin: 14px 18px; font-family: 'Inter', sans-serif; min-width: 180px; }
+.leaflet-container { font-family: 'Inter', sans-serif; }
+.leaflet-control-attribution { background: rgba(250,248,243,0.85) !important; font-size: 9px !important; color: var(--ink-soft) !important; }
+.leaflet-control-attribution a { color: var(--ink-soft) !important; }
+.pop-num { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 11px; color: var(--gold); text-transform: uppercase; letter-spacing: 0.18em; margin-bottom: 4px; }
+.pop-title { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 16px; color: var(--ink); margin-bottom: 6px; line-height: 1.3; }
+.pop-price { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 20px; color: var(--ink); line-height: 1; margin-bottom: 8px; }
+.pop-link { display: inline-block; margin-top: 4px; font-size: 10px; text-transform: uppercase; letter-spacing: 0.22em; color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--gold); padding-bottom: 2px; cursor: pointer; }
+.pop-link:hover { color: var(--ink); border-color: var(--ink); }
+.pop-row { padding-top: 8px; }
+.pop-row + .pop-row { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--hairline); }
+.pop-row:first-child { padding-top: 0; }
+.card.flash { animation: cardFlash 1.6s ease-out 1; }
+@keyframes cardFlash {
+  0%   { box-shadow: 0 0 0 0 rgba(138,111,69,0.55); }
+  30%  { box-shadow: 0 0 0 6px rgba(138,111,69,0.32); }
+  100% { box-shadow: 0 0 0 0 rgba(138,111,69,0); }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="brand-bar">
+    <div class="brand">
+      <span class="brand-mark"><span class="izi">IZI</span><span class="rent">Home</span></span>
+      <span class="brand-tag">Batumi · Real Estate</span>
+    </div>
+    <span class="brand-meta">Июнь 2026</span>
+  </div>
+
+  <header class="hero">
+    <p class="hero-eyebrow">Private Selection</p>
+    <h1>Подбор <span class="italic">для Игоря</span></h1>
+    <p class="hero-sub">9 квартир в Батуми · отобрано вручную</p>
+    <p class="lead">Квартиры, готовые к заселению, в рамках вашего бюджета и по критериям, которые вы озвучили.</p>
+    
+  </header>
+
+  <section class="cards-section">
+    <div class="cards-heading">
+      <h2>Отобранные объекты</h2>
+      <span class="count">9 объектов</span>
+    </div>
+    <div class="cards">
+      <article class="card" id="card-1">
+    <div class="carousel" data-photos="[&quot;https://static-statements.tnet.ge/uploads/202606/20260606/statements/k3bc9Wn6a2422bc7f858.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202606/20260606/statements/K1DduMC6a242308e871f.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202606/20260606/statements/pynhKYe6a242340da0c0.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202606/20260606/statements/kwHiMjc6a242349be335.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202606/20260606/statements/aPVlCFN6a242395e0fc8.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202606/20260606/statements/zwxwYtp6a2423c89d2c0.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202606/20260606/statements/QBnK9Ix6a2423e57603a.webp&quot;]">
+      <div class="track">
+        <div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202606/20260606/statements/k3bc9Wn6a2422bc7f858.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202606/20260606/statements/K1DduMC6a242308e871f.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202606/20260606/statements/pynhKYe6a242340da0c0.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202606/20260606/statements/kwHiMjc6a242349be335.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202606/20260606/statements/aPVlCFN6a242395e0fc8.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202606/20260606/statements/zwxwYtp6a2423c89d2c0.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202606/20260606/statements/QBnK9Ix6a2423e57603a.webp')"></div>
+      </div>
+      <div class="counter">07 фото</div>
+      <button class="nav prev" aria-label="Назад">‹</button><button class="nav next" aria-label="Вперёд">›</button>
+      <div class="dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+    </div>
+    <div class="info">
+      <div class="card-head">
+        <div class="price-block">
+          <div class="price">$110 000</div>
+          <div class="price-per-m">1 719 $ / м²</div>
+        </div>
+      </div>
+      <div class="specs-table">
+        <div class="spec-row"><span class="label">Площадь</span><span class="value">64 м²</span></div><div class="spec-row"><span class="label">Этаж</span><span class="value">6 / 15</span></div><div class="spec-row"><span class="label">Комнат</span><span class="value">3</span></div><div class="spec-row"><span class="label">Спален</span><span class="value">2</span></div><div class="spec-row"><span class="label">Район</span><span class="value">Химшиашвили</span></div><div class="spec-row"></div>
+      </div>
+      <div class="title-row">Продается 3 комнатная квартира в батуми</div>
+      <div class="card-map-block"><p class="block-label">Расположение</p><div class="card-map" id="card-map-1" data-lat="41.636712" data-lng="41.611436"></div><p class="card-addr">ул. Ш. Инасаридзе, 8</p></div>
+      
+    </div>
+  </article>
+<article class="card" id="card-2">
+    <div class="carousel" data-photos="[&quot;https://static.ss.ge/20260616/1_1ea0fcc8-07ea-4268-bbd4-ce2f5fd1a970.jpg&quot;,&quot;https://static.ss.ge/20260616/15_ec89ad53-955a-4be2-8d36-f5f6cb407099.jpg&quot;,&quot;https://static.ss.ge/20260616/2_3dff791b-25ef-4d1e-a448-b21fed65e197.jpg&quot;,&quot;https://static.ss.ge/20260616/4_0c8d4ec8-c3b1-4dc7-aaa2-2cbb4304c5b2.jpg&quot;,&quot;https://static.ss.ge/20260616/7_4e70948b-a5fc-41fa-8171-e151726d5e8c.jpg&quot;,&quot;https://static.ss.ge/20260616/7_56d98970-96da-4289-8107-707af9e41824.jpg&quot;,&quot;https://static.ss.ge/20260616/17_4dd97a58-ce39-43b2-a524-5a6d2f5b83e9.jpg&quot;,&quot;https://static.ss.ge/20260616/10_00fc6369-4d10-400d-9278-b65e707d1e01.jpg&quot;]">
+      <div class="track">
+        <div class="slide" style="background-image:url('https://static.ss.ge/20260616/1_1ea0fcc8-07ea-4268-bbd4-ce2f5fd1a970.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20260616/15_ec89ad53-955a-4be2-8d36-f5f6cb407099.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20260616/2_3dff791b-25ef-4d1e-a448-b21fed65e197.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20260616/4_0c8d4ec8-c3b1-4dc7-aaa2-2cbb4304c5b2.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20260616/7_4e70948b-a5fc-41fa-8171-e151726d5e8c.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20260616/7_56d98970-96da-4289-8107-707af9e41824.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20260616/17_4dd97a58-ce39-43b2-a524-5a6d2f5b83e9.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20260616/10_00fc6369-4d10-400d-9278-b65e707d1e01.jpg')"></div>
+      </div>
+      <div class="counter">08 фото</div>
+      <button class="nav prev" aria-label="Назад">‹</button><button class="nav next" aria-label="Вперёд">›</button>
+      <div class="dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+    </div>
+    <div class="info">
+      <div class="card-head">
+        <div class="price-block">
+          <div class="price">$110 000</div>
+          <div class="price-per-m">1 719 $ / м²</div>
+        </div>
+      </div>
+      <div class="specs-table">
+        <div class="spec-row"><span class="label">Площадь</span><span class="value">64 м²</span></div><div class="spec-row"><span class="label">Этаж</span><span class="value">8 / 28</span></div><div class="spec-row"><span class="label">Спален</span><span class="value">2</span></div><div class="spec-row"><span class="label">Район</span><span class="value">Район аэропорта (Ангиса)</span></div>
+      </div>
+      <div class="title-row">Продаётся 3-комнатная квартира в Батуми</div>
+      <div class="card-map-block"><p class="block-label">Расположение</p><div class="card-map" id="card-map-2" data-lat="41.62" data-lng="41.61"></div><p class="card-addr">Ангиса, 3-й переулок, 8 · <span class="approx">расположение примерное</span></p></div>
+      
+    </div>
+  </article>
+<article class="card" id="card-3">
+    <div class="carousel" data-photos="[&quot;https://static-statements.tnet.ge/uploads/202507/20250717/statements/cTJYSEw6878f37ec2992.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202507/20250717/statements/2sDF4gx6878f37eb081d.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202507/20250717/statements/h0qbg016878f37eb4674.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202507/20250717/statements/GvUUKfG6878f37eba6fb.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202507/20250717/statements/KJkl9DZ6878f37e9a5f2.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202507/20250717/statements/l6Xa8ZU6878f37ec1d9e.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202507/20250717/statements/1QVWA236878f37eac469.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202507/20250717/statements/TIuswVz6878f37e96f61.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202507/20250717/statements/qoNZrtV6878f37ebb440.webp&quot;]">
+      <div class="track">
+        <div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202507/20250717/statements/cTJYSEw6878f37ec2992.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202507/20250717/statements/2sDF4gx6878f37eb081d.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202507/20250717/statements/h0qbg016878f37eb4674.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202507/20250717/statements/GvUUKfG6878f37eba6fb.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202507/20250717/statements/KJkl9DZ6878f37e9a5f2.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202507/20250717/statements/l6Xa8ZU6878f37ec1d9e.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202507/20250717/statements/1QVWA236878f37eac469.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202507/20250717/statements/TIuswVz6878f37e96f61.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202507/20250717/statements/qoNZrtV6878f37ebb440.webp')"></div>
+      </div>
+      <div class="counter">09 фото</div>
+      <button class="nav prev" aria-label="Назад">‹</button><button class="nav next" aria-label="Вперёд">›</button>
+      <div class="dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+    </div>
+    <div class="info">
+      <div class="card-head">
+        <div class="price-block">
+          <div class="price">$95 000</div>
+          <div class="price-per-m">1 583 $ / м²</div>
+        </div>
+      </div>
+      <div class="specs-table">
+        <div class="spec-row"><span class="label">Площадь</span><span class="value">60 м²</span></div><div class="spec-row"><span class="label">Этаж</span><span class="value">12 / 18</span></div><div class="spec-row"><span class="label">Комнат</span><span class="value">3</span></div><div class="spec-row"><span class="label">Спален</span><span class="value">2</span></div><div class="spec-row"><span class="label">Район</span><span class="value">Химшиашвили</span></div><div class="spec-row"></div>
+      </div>
+      <div class="title-row">Продается 3 комнатная квартира в батуми</div>
+      <div class="card-map-block"><p class="block-label">Расположение</p><div class="card-map" id="card-map-3" data-lat="41.633171" data-lng="41.608883"></div><p class="card-addr">ул. Ш. Инасаридзе, 13</p></div>
+      <div class="desc-block"><p class="block-label">Описание</p><p class="desc" data-lang="ru">Срочно продаётся на перекрёстке Инасаридзе и Кобаладзе, рядом с корпусом Next, в корпусе Dodo Pizza — 3-комнатная квартира с 2 изолированными спальнями с естественным освещением. Укомплектована всем необходимым: мебель, техника, центральное отопление и кондиционер — всё остаётся в квартире. Вид на море. Возможен обмен на недвижимость в Тбилиси. Я собственник.</p></div>
+    </div>
+  </article>
+<article class="card" id="card-4">
+    <div class="carousel" data-photos="[&quot;https://static-statements.tnet.ge/uploads/202606/20260610/statements/4NjczsK6a291ce3d01b6.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202606/20260610/statements/O3XCXS36a291ce3d2c3b.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202606/20260610/statements/2V7EYCz6a291ce3d2305.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202606/20260610/statements/v4pufQq6a291ce3bee50.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202606/20260610/statements/Z7BwmC16a291ce3cebf9.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202606/20260610/statements/Q9DV5uL6a291ce3cf359.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202606/20260610/statements/gKpi8Or6a291ce3b73ee.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202606/20260610/statements/iFs33BC6a291ce3d2c68.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202606/20260610/statements/X85EFSe6a291ce3d2504.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202606/20260610/statements/FmfkTLs6a291ce3d48df.webp&quot;]">
+      <div class="track">
+        <div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202606/20260610/statements/4NjczsK6a291ce3d01b6.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202606/20260610/statements/O3XCXS36a291ce3d2c3b.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202606/20260610/statements/2V7EYCz6a291ce3d2305.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202606/20260610/statements/v4pufQq6a291ce3bee50.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202606/20260610/statements/Z7BwmC16a291ce3cebf9.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202606/20260610/statements/Q9DV5uL6a291ce3cf359.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202606/20260610/statements/gKpi8Or6a291ce3b73ee.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202606/20260610/statements/iFs33BC6a291ce3d2c68.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202606/20260610/statements/X85EFSe6a291ce3d2504.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202606/20260610/statements/FmfkTLs6a291ce3d48df.webp')"></div>
+      </div>
+      <div class="counter">10 фото</div>
+      <button class="nav prev" aria-label="Назад">‹</button><button class="nav next" aria-label="Вперёд">›</button>
+      <div class="dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+    </div>
+    <div class="info">
+      <div class="card-head">
+        <div class="price-block">
+          <div class="price">$103 000</div>
+          <div class="price-per-m">1 717 $ / м²</div>
+        </div>
+      </div>
+      <div class="specs-table">
+        <div class="spec-row"><span class="label">Площадь</span><span class="value">60 м²</span></div><div class="spec-row"><span class="label">Этаж</span><span class="value">3 / 18</span></div><div class="spec-row"><span class="label">Комнат</span><span class="value">3</span></div><div class="spec-row"><span class="label">Спален</span><span class="value">2</span></div><div class="spec-row"><span class="label">Район</span><span class="value">Центр (ул. Горгасали)</span></div><div class="spec-row"></div>
+      </div>
+      <div class="title-row">Продается 3 комнатная квартира в батуми</div>
+      <div class="card-map-block"><p class="block-label">Расположение</p><div class="card-map" id="card-map-4" data-lat="41.642805" data-lng="41.624255"></div><p class="card-addr">ул. В. Горгасали, 147</p></div>
+      <div class="desc-block"><p class="block-label">Описание</p><p class="desc" data-lang="ru">Продаётся в Батуми, на перекрёстке Вахтанга Горгасали и Грибоедова, на 3-м этаже. Трёхкомнатная с двумя спальнями, с ремонтом, мебелью, техникой и центральным отоплением.</p></div>
+    </div>
+  </article>
+<article class="card" id="card-5">
+    <div class="carousel" data-photos="[&quot;https://static.ss.ge/20260103/2_44e38b47-2424-416c-b9b5-59d53fc46a5f.jpg&quot;,&quot;https://static.ss.ge/20260103/18_506c0255-d127-474b-ac57-339d7926916a.jpg&quot;,&quot;https://static.ss.ge/20260103/14_8b3a588d-0564-41a0-b8c8-c1be0a5e4cd1.jpg&quot;,&quot;https://static.ss.ge/20260103/9_75d8236e-3026-4513-ba9d-91f777701d25.jpg&quot;,&quot;https://static.ss.ge/20260103/3_e6c995c9-9cd9-4cb7-8969-14d279adb9d0.jpg&quot;,&quot;https://static.ss.ge/20260103/13_94fed976-5d04-49fe-8d8f-0f185f57efa6.jpg&quot;,&quot;https://static.ss.ge/20260103/10_32000506-d61a-4977-8e70-629b426078c1.jpg&quot;,&quot;https://static.ss.ge/20260103/7_708861fd-f2b3-41e0-a14d-c73557019764.jpg&quot;]">
+      <div class="track">
+        <div class="slide" style="background-image:url('https://static.ss.ge/20260103/2_44e38b47-2424-416c-b9b5-59d53fc46a5f.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20260103/18_506c0255-d127-474b-ac57-339d7926916a.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20260103/14_8b3a588d-0564-41a0-b8c8-c1be0a5e4cd1.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20260103/9_75d8236e-3026-4513-ba9d-91f777701d25.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20260103/3_e6c995c9-9cd9-4cb7-8969-14d279adb9d0.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20260103/13_94fed976-5d04-49fe-8d8f-0f185f57efa6.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20260103/10_32000506-d61a-4977-8e70-629b426078c1.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20260103/7_708861fd-f2b3-41e0-a14d-c73557019764.jpg')"></div>
+      </div>
+      <div class="counter">08 фото</div>
+      <button class="nav prev" aria-label="Назад">‹</button><button class="nav next" aria-label="Вперёд">›</button>
+      <div class="dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+    </div>
+    <div class="info">
+      <div class="card-head">
+        <div class="price-block">
+          <div class="price">$95 000</div>
+          <div class="price-per-m">1 583 $ / м²</div>
+        </div>
+      </div>
+      <div class="specs-table">
+        <div class="spec-row"><span class="label">Площадь</span><span class="value">60 м²</span></div><div class="spec-row"><span class="label">Этаж</span><span class="value">12 / 18</span></div><div class="spec-row"><span class="label">Спален</span><span class="value">2</span></div><div class="spec-row"><span class="label">Район</span><span class="value">Химшиашвили</span></div>
+      </div>
+      <div class="title-row">Продаётся 3-комнатная квартира в Батуми</div>
+      <div class="card-map-block"><p class="block-label">Расположение</p><div class="card-map" id="card-map-5" data-lat="41.611053" data-lng="41.6351056"></div><p class="card-addr">ул. Ш. Инасаридзе, 13</p></div>
+      <div class="desc-block"><p class="block-label">Описание</p><p class="desc" data-lang="ru">Срочно продается 3-комнатная квартира рядом с домом Next на перекрестке Инсарадзе и Кобаладзе, в здании Dodo Pizza, с 2 изолированными спальнями с естественным освещением. Квартира оснащена всем необходимым инвентарем, мебелью, техникой, центральным отоплением и кондиционером, которые остаются в квартире с видом на море. Возможен обмен на недвижимость в Тбилиси! Я владелец.</p></div>
+    </div>
+  </article>
+<article class="card" id="card-6">
+    <div class="carousel" data-photos="[&quot;https://static-statements.tnet.ge/uploads/202603/20260315/statements/1HulMV169b6a71750d22.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202605/20260528/statements/PQAqoGD6a17de65bdacf.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202603/20260308/statements/fwGWkiZ69ad8e877e3ef.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202603/20260308/statements/JytmafQ69ad8eb4c526b.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202603/20260308/statements/t4UBuOX69ad8e8779ecd.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202603/20260308/statements/b6OC7h769ad8e8738c15.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202603/20260308/statements/KVjIa4C69ad8e6e0ff75.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202603/20260308/statements/fdtANaB69ad8e6e1c042.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202603/20260308/statements/x0gEWr069ad8e877b77d.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202603/20260308/statements/8XWNDQb69ad8eb4c687b.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202603/20260308/statements/d1tspWi69ad8eb4d2bd1.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202603/20260308/statements/kcc4iYJ69ad8eefcf15b.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202603/20260308/statements/fsva25z69ad8f84d82b7.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202605/20260528/statements/l9ir5j26a17de65bef79.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202605/20260528/statements/xwRhTZ06a17de65c0aa6.webp&quot;]">
+      <div class="track">
+        <div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202603/20260315/statements/1HulMV169b6a71750d22.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202605/20260528/statements/PQAqoGD6a17de65bdacf.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202603/20260308/statements/fwGWkiZ69ad8e877e3ef.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202603/20260308/statements/JytmafQ69ad8eb4c526b.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202603/20260308/statements/t4UBuOX69ad8e8779ecd.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202603/20260308/statements/b6OC7h769ad8e8738c15.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202603/20260308/statements/KVjIa4C69ad8e6e0ff75.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202603/20260308/statements/fdtANaB69ad8e6e1c042.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202603/20260308/statements/x0gEWr069ad8e877b77d.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202603/20260308/statements/8XWNDQb69ad8eb4c687b.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202603/20260308/statements/d1tspWi69ad8eb4d2bd1.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202603/20260308/statements/kcc4iYJ69ad8eefcf15b.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202603/20260308/statements/fsva25z69ad8f84d82b7.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202605/20260528/statements/l9ir5j26a17de65bef79.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202605/20260528/statements/xwRhTZ06a17de65c0aa6.webp')"></div>
+      </div>
+      <div class="counter">15 фото</div>
+      <button class="nav prev" aria-label="Назад">‹</button><button class="nav next" aria-label="Вперёд">›</button>
+      <div class="dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+    </div>
+    <div class="info">
+      <div class="card-head">
+        <div class="price-block">
+          <div class="price">$115 000</div>
+          <div class="price-per-m">1 949 $ / м²</div>
+        </div>
+      </div>
+      <div class="specs-table">
+        <div class="spec-row"><span class="label">Площадь</span><span class="value">59 м²</span></div><div class="spec-row"><span class="label">Этаж</span><span class="value">18 / 25</span></div><div class="spec-row"><span class="label">Комнат</span><span class="value">3</span></div><div class="spec-row"><span class="label">Спален</span><span class="value">2</span></div><div class="spec-row"><span class="label">Район</span><span class="value">Новый бульвар (Orbi Beach Tower)</span></div><div class="spec-row"></div>
+      </div>
+      <div class="title-row">Продается 3 комнатная квартира в батуми</div>
+      <div class="card-map-block"><p class="block-label">Расположение</p><div class="card-map" id="card-map-6" data-lat="41.630116" data-lng="41.602101"></div><p class="card-addr">ул. Ш. Химшиашвили, 57</p></div>
+      <div class="desc-block"><p class="block-label">Описание</p><p class="desc" data-lang="ru">Срочно, со скидкой. Прямой панорамный вид на море и набережную. В одном из центральных мест города, у въезда на Новый бульвар, в башне Orbi Beach Tower. 2 светлые спальни, с мебелью и техникой.</p></div>
+    </div>
+  </article>
+<article class="card" id="card-7">
+    <div class="carousel" data-photos="[&quot;https://static-statements.tnet.ge/uploads/202503/20250320/statements/ZEL6ovW67dc3cf9cec08.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202503/20250320/statements/FDUdqk367dc3cfa6c140.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202503/20250320/statements/dY3NoM267dc3cfa71a7e.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202503/20250320/statements/M5wVOEL67dc3cfa79ab2.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202503/20250320/statements/5SCFH5067dc3dc059815.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202503/20250320/statements/lb74u5K67dc3dc1e1f97.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202503/20250320/statements/ALs4x0P67dc3dc2265f4.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202503/20250320/statements/KS2E6Z467dc3dc279c1c.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202503/20250320/statements/jdVsVFY67dc3dc299bc7.webp&quot;]">
+      <div class="track">
+        <div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202503/20250320/statements/ZEL6ovW67dc3cf9cec08.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202503/20250320/statements/FDUdqk367dc3cfa6c140.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202503/20250320/statements/dY3NoM267dc3cfa71a7e.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202503/20250320/statements/M5wVOEL67dc3cfa79ab2.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202503/20250320/statements/5SCFH5067dc3dc059815.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202503/20250320/statements/lb74u5K67dc3dc1e1f97.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202503/20250320/statements/ALs4x0P67dc3dc2265f4.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202503/20250320/statements/KS2E6Z467dc3dc279c1c.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202503/20250320/statements/jdVsVFY67dc3dc299bc7.webp')"></div>
+      </div>
+      <div class="counter">09 фото</div>
+      <button class="nav prev" aria-label="Назад">‹</button><button class="nav next" aria-label="Вперёд">›</button>
+      <div class="dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+    </div>
+    <div class="info">
+      <div class="card-head">
+        <div class="price-block">
+          <div class="price">$100 000</div>
+          <div class="price-per-m">1 724 $ / м²</div>
+        </div>
+      </div>
+      <div class="specs-table">
+        <div class="spec-row"><span class="label">Площадь</span><span class="value">58 м²</span></div><div class="spec-row"><span class="label">Этаж</span><span class="value">13 / 13</span></div><div class="spec-row"><span class="label">Комнат</span><span class="value">3</span></div><div class="spec-row"><span class="label">Спален</span><span class="value">2</span></div><div class="spec-row"><span class="label">Район</span><span class="value">Центр (ул. Горгасали)</span></div><div class="spec-row"></div>
+      </div>
+      <div class="title-row">Продается 3 комнатная квартира в батуми</div>
+      <div class="card-map-block"><p class="block-label">Расположение</p><div class="card-map" id="card-map-7" data-lat="41.644611" data-lng="41.629402"></div><p class="card-addr">ул. В. Горгасали, 110/114</p></div>
+      <div class="desc-block"><p class="block-label">Описание</p><p class="desc" data-lang="ru">Квартира в новостройке в Батуми, очень близко к морю, с большой верандой и красивыми видами. Улица Вахтанга Горгасали 110/114, 13-й (последний) этаж. Всё готово для проживания, мебель остаётся. Последний этаж — есть перспектива надстройки.</p></div>
+    </div>
+  </article>
+<article class="card" id="card-8">
+    <div class="carousel" data-photos="[&quot;https://static.ss.ge/20260406/1_0279f37d-ef8f-4d5c-aab3-9e6862620823.jpg&quot;,&quot;https://static.ss.ge/20260406/5_84d78d2c-0869-4db8-a814-7407071ad99c.jpg&quot;,&quot;https://static.ss.ge/20260406/1_83b12f15-00aa-4420-a7bd-95d0ca854e53.jpg&quot;,&quot;https://static.ss.ge/20260406/2_a093918d-4410-4c9f-b1a7-015f5b7f469b.jpg&quot;,&quot;https://static.ss.ge/20260406/2_856d6203-88de-4215-865b-308d5edcde2b.jpg&quot;,&quot;https://static.ss.ge/20260406/15_8706a4e8-f4ed-4139-9d6e-948c8317ca2f.jpg&quot;,&quot;https://static.ss.ge/20260406/11_c85576f0-3625-4826-95d7-8dba9018dda0.jpg&quot;,&quot;https://static.ss.ge/20260406/7_557adc53-0af3-41b2-bec7-635150220b12.jpg&quot;,&quot;https://static.ss.ge/20260406/9_f724e58a-dbb2-493c-a1c3-b871280788ba.jpg&quot;,&quot;https://static.ss.ge/20260406/1_4ce70c19-ea2e-4531-bb70-b8334f9502fe.jpg&quot;,&quot;https://static.ss.ge/20260406/12_60ba99ad-9c87-44e4-b87c-75eebbd3c67a.jpg&quot;,&quot;https://static.ss.ge/20260406/15_0ff05c96-b375-4504-b470-30a9ae5abd22.jpg&quot;,&quot;https://static.ss.ge/20260406/10_99b0af12-ff71-4522-ba33-2b89bdab922b.jpg&quot;,&quot;https://static.ss.ge/20260406/8_a5fe24a4-736e-407d-bf19-bf479af1cd88.jpg&quot;]">
+      <div class="track">
+        <div class="slide" style="background-image:url('https://static.ss.ge/20260406/1_0279f37d-ef8f-4d5c-aab3-9e6862620823.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20260406/5_84d78d2c-0869-4db8-a814-7407071ad99c.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20260406/1_83b12f15-00aa-4420-a7bd-95d0ca854e53.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20260406/2_a093918d-4410-4c9f-b1a7-015f5b7f469b.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20260406/2_856d6203-88de-4215-865b-308d5edcde2b.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20260406/15_8706a4e8-f4ed-4139-9d6e-948c8317ca2f.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20260406/11_c85576f0-3625-4826-95d7-8dba9018dda0.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20260406/7_557adc53-0af3-41b2-bec7-635150220b12.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20260406/9_f724e58a-dbb2-493c-a1c3-b871280788ba.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20260406/1_4ce70c19-ea2e-4531-bb70-b8334f9502fe.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20260406/12_60ba99ad-9c87-44e4-b87c-75eebbd3c67a.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20260406/15_0ff05c96-b375-4504-b470-30a9ae5abd22.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20260406/10_99b0af12-ff71-4522-ba33-2b89bdab922b.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20260406/8_a5fe24a4-736e-407d-bf19-bf479af1cd88.jpg')"></div>
+      </div>
+      <div class="counter">14 фото</div>
+      <button class="nav prev" aria-label="Назад">‹</button><button class="nav next" aria-label="Вперёд">›</button>
+      <div class="dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+    </div>
+    <div class="info">
+      <div class="card-head">
+        <div class="price-block">
+          <div class="price">$105 000</div>
+          <div class="price-per-m">1 842 $ / м²</div>
+        </div>
+      </div>
+      <div class="specs-table">
+        <div class="spec-row"><span class="label">Площадь</span><span class="value">57 м²</span></div><div class="spec-row"><span class="label">Этаж</span><span class="value">18 / 35</span></div><div class="spec-row"><span class="label">Спален</span><span class="value">2</span></div><div class="spec-row"><span class="label">Район</span><span class="value">Посёлок Тамар</span></div>
+      </div>
+      <div class="title-row">Продаётся 3-комнатная квартира в Батуми</div>
+      <div class="card-map-block"><p class="block-label">Расположение</p><div class="card-map" id="card-map-8" data-lat="41.617223804118424" data-lng="41.6392974912861"></div><p class="card-addr">ул. Дж. Шартава, 8</p></div>
+      <div class="desc-block"><p class="block-label">Описание</p><p class="desc" data-lang="ru">▪️ ул. Шартава, 8
+▪️ Общая площадь — 57 м², 2+1
+▪️ 18-й этаж
+▪️ балкон
+▪️ новый качественный ремонт. Квартира полностью оборудована и обставлена мебелью
+▪️ две отдельные спальни, вторая спальня без окна («Это комната для идеального сна — здесь нет лишнего шума и света с улицы, а мягкую циркуляцию воздуха обеспечивает аккуратное вентиляционное окно»).
+▪️ WhatsApp</p></div>
+    </div>
+  </article>
+<article class="card" id="card-9">
+    <div class="carousel" data-photos="[&quot;https://static.ss.ge/20250905/10_1045a993-1a90-40fd-a6aa-db3020e7ec78.jpg&quot;,&quot;https://static.ss.ge/20250905/3_4ceb9881-5efe-475a-b35e-5fe33bfce666.jpg&quot;,&quot;https://static.ss.ge/20250905/8_660f5e06-4149-49dc-a7cb-107560ebd7b8.jpg&quot;,&quot;https://static.ss.ge/20250905/2_b6c761a4-12f7-4666-9b03-1df0dee0b082.jpg&quot;,&quot;https://static.ss.ge/20250905/3_68e25459-aa70-4cff-9121-568f4c9a8b3d.jpg&quot;,&quot;https://static.ss.ge/20250905/8_c0749850-a20f-4470-9b84-eff09169f38a.jpg&quot;,&quot;https://static.ss.ge/20250905/0_b3457fe6-b58d-42f7-a769-b54b4944b4fc.jpg&quot;,&quot;https://static.ss.ge/20250905/13_f3aa8712-ea15-4ca1-bb27-be59003fd1ce.jpg&quot;,&quot;https://static.ss.ge/20250905/0_c5d1944f-90ca-4c0c-bd6e-368b5bed424c.jpg&quot;]">
+      <div class="track">
+        <div class="slide" style="background-image:url('https://static.ss.ge/20250905/10_1045a993-1a90-40fd-a6aa-db3020e7ec78.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20250905/3_4ceb9881-5efe-475a-b35e-5fe33bfce666.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20250905/8_660f5e06-4149-49dc-a7cb-107560ebd7b8.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20250905/2_b6c761a4-12f7-4666-9b03-1df0dee0b082.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20250905/3_68e25459-aa70-4cff-9121-568f4c9a8b3d.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20250905/8_c0749850-a20f-4470-9b84-eff09169f38a.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20250905/0_b3457fe6-b58d-42f7-a769-b54b4944b4fc.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20250905/13_f3aa8712-ea15-4ca1-bb27-be59003fd1ce.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20250905/0_c5d1944f-90ca-4c0c-bd6e-368b5bed424c.jpg')"></div>
+      </div>
+      <div class="counter">09 фото</div>
+      <button class="nav prev" aria-label="Назад">‹</button><button class="nav next" aria-label="Вперёд">›</button>
+      <div class="dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+    </div>
+    <div class="info">
+      <div class="card-head">
+        <div class="price-block">
+          <div class="price">$115 000</div>
+          <div class="price-per-m">2 091 $ / м²</div>
+        </div>
+      </div>
+      <div class="specs-table">
+        <div class="spec-row"><span class="label">Площадь</span><span class="value">55 м²</span></div><div class="spec-row"><span class="label">Этаж</span><span class="value">35 / 39</span></div><div class="spec-row"><span class="label">Спален</span><span class="value">2</span></div><div class="spec-row"><span class="label">Район</span><span class="value">Химшиашвили</span></div>
+      </div>
+      <div class="title-row">Продаётся 3-комнатная квартира в Батуми</div>
+      <div class="card-map-block"><p class="block-label">Расположение</p><div class="card-map" id="card-map-9" data-lat="41.6159965" data-lng="41.6391506"></div><p class="card-addr">ул. Дж. Шартава, 16</p></div>
+      <div class="desc-block"><p class="block-label">Описание</p><p class="desc" data-lang="ru">#Продажа квартиры в Батуми
+
+Бульвар Шартава 7
+2+1
+Вид на МОРЕ и на Аллею Героев
+✔️ ДВЕ отдельная спальни
+✔️ Посудомоечная машина
+✔️ Духовка
+✔️ Большой холодильник
+✔️ Стиральная машина
+✔️ Сушильная машина
+
+💵 115000 долл
+(WhatsApp)</p></div>
+    </div>
+  </article>
+    </div>
+  </section>
+
+  <section class="map-section">
+  <div class="map-header">
+    <h2 class="map-title">Все объекты подборки на карте Батуми</h2>
+    <div class="map-meta">9 точек · по адресам объявлений</div>
+  </div>
+  <div id="map" class="map-canvas" role="img" aria-label="Карта объектов подбора"></div>
+  <p class="map-note">Точки расставлены по адресам и координатам из объявлений. Где точной геометки нет — расположение указано примерно по улице. Точный подъезд и этаж уточняются с продавцом перед показом.</p>
+</section>
+
+  <section class="closing">
+    <p class="closing-eyebrow">Продолжение разговора</p>
+    <h2>Что-то <span class="italic">заинтересовало?</span></h2>
+    <p class="closing-sub">Напишите — мы организуем просмотр, проверим документы, договоримся о торге. По любому из объектов в подборке.</p>
+    <a class="wa-btn" href="https://wa.me/995571650338?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D1%83%D0%B5%D1%82%20%D0%BF%D0%BE%D0%B4%D0%B1%D0%BE%D1%80%20%D0%B4%D0%BB%D1%8F%20%D0%98%D0%B3%D0%BE%D1%80%D1%8F." target="_blank" rel="noopener">
+      <span>Написать в WhatsApp</span>
+      <span class="arrow">→</span>
+    </a>
+    <div class="closing-signature">Алексей Курмаз · IZIHome</div>
+  </section>
+
+  <footer>
+    IZIHome · Batumi · Июнь 2026
+  </footer>
+</div>
+
+<div class="lb-overlay" id="lb">
+  <button class="lb-close" id="lb-close" aria-label="Закрыть">×</button>
+  <button class="lb-nav prev" id="lb-prev" aria-label="Назад">‹</button>
+  <img class="lb-img" id="lb-img" alt="">
+  <button class="lb-nav next" id="lb-next" aria-label="Вперёд">›</button>
+  <div class="lb-counter" id="lb-counter"></div>
+</div>
+
+<script>
+(function(){
+  // === per-carousel: prev/next + dots sync ===
+  document.querySelectorAll('.carousel').forEach((car) => {
+    const track = car.querySelector('.track')
+    const slides = car.querySelectorAll('.slide')
+    const prev = car.querySelector('.nav.prev')
+    const next = car.querySelector('.nav.next')
+    const dots = car.querySelectorAll('.dot')
+    if (!track || slides.length <= 1) return
+
+    function scrollToIdx(i) {
+      const w = track.clientWidth
+      track.scrollTo({ left: i * w, behavior: 'smooth' })
+    }
+    function activeIdx() {
+      return Math.round(track.scrollLeft / track.clientWidth)
+    }
+    prev && prev.addEventListener('click', (e) => {
+      e.stopPropagation()
+      scrollToIdx(Math.max(0, activeIdx() - 1))
+    })
+    next && next.addEventListener('click', (e) => {
+      e.stopPropagation()
+      scrollToIdx(Math.min(slides.length - 1, activeIdx() + 1))
+    })
+    track.addEventListener('scroll', () => {
+      const i = activeIdx()
+      dots.forEach((d, k) => d.classList.toggle('active', k === i))
+    })
+  })
+
+  // === lightbox ===
+  const lb = document.getElementById('lb')
+  const lbImg = document.getElementById('lb-img')
+  const lbCnt = document.getElementById('lb-counter')
+  const lbClose = document.getElementById('lb-close')
+  const lbPrev = document.getElementById('lb-prev')
+  const lbNext = document.getElementById('lb-next')
+  let lbList = []
+  let lbIdx = 0
+
+  function openLB(photos, startIdx) {
+    lbList = photos
+    lbIdx = startIdx
+    updateLB()
+    lb.classList.add('open')
+    document.body.style.overflow = 'hidden'
+  }
+  function updateLB() {
+    lbImg.src = lbList[lbIdx]
+    lbCnt.textContent = (lbIdx + 1) + ' / ' + lbList.length
+    lbPrev.style.visibility = lbIdx === 0 ? 'hidden' : 'visible'
+    lbNext.style.visibility = lbIdx === lbList.length - 1 ? 'hidden' : 'visible'
+  }
+  function closeLB() {
+    lb.classList.remove('open')
+    document.body.style.overflow = ''
+  }
+  lbClose.addEventListener('click', closeLB)
+  lb.addEventListener('click', (e) => { if (e.target === lb) closeLB() })
+  lbPrev.addEventListener('click', () => { if (lbIdx > 0) { lbIdx--; updateLB() } })
+  lbNext.addEventListener('click', () => { if (lbIdx < lbList.length - 1) { lbIdx++; updateLB() } })
+  document.addEventListener('keydown', (e) => {
+    if (!lb.classList.contains('open')) return
+    if (e.key === 'Escape') closeLB()
+    if (e.key === 'ArrowLeft' && lbIdx > 0) { lbIdx--; updateLB() }
+    if (e.key === 'ArrowRight' && lbIdx < lbList.length - 1) { lbIdx++; updateLB() }
+  })
+
+  document.querySelectorAll('.carousel').forEach((car) => {
+    const photos = JSON.parse(car.dataset.photos || '[]')
+    if (!photos.length) return
+    car.addEventListener('click', (e) => {
+      // не открывать lightbox если клик по prev/next
+      if (e.target.closest('.nav')) return
+      const track = car.querySelector('.track')
+      const idx = track ? Math.round(track.scrollLeft / track.clientWidth) : 0
+      openLB(photos, idx)
+    })
+  })
+})()
+</script>
+<script>
+window.addEventListener('load', () => {
+  if (typeof L === 'undefined') return
+  const mapEl = document.getElementById('map')
+  if (!mapEl) return
+
+  const POINTS = [{"rn":"I","lat":41.636712,"lng":41.611436,"items":[{"cardId":1,"title":"ул. Ш. Инасаридзе, 8","price":"$110 000","area":"64 м²"}]},{"rn":"II","lat":41.62,"lng":41.61,"items":[{"cardId":2,"title":"Ангиса, 3-й переулок, 8","price":"$110 000","area":"64 м²"}]},{"rn":"III","lat":41.633171,"lng":41.608883,"items":[{"cardId":3,"title":"ул. Ш. Инасаридзе, 13","price":"$95 000","area":"60 м²"}]},{"rn":"IV","lat":41.642805,"lng":41.624255,"items":[{"cardId":4,"title":"ул. В. Горгасали, 147","price":"$103 000","area":"60 м²"}]},{"rn":"V","lat":41.611053,"lng":41.6351056,"items":[{"cardId":5,"title":"ул. Ш. Инасаридзе, 13","price":"$95 000","area":"60 м²"}]},{"rn":"VI","lat":41.630116,"lng":41.602101,"items":[{"cardId":6,"title":"ул. Ш. Химшиашвили, 57","price":"$115 000","area":"59 м²"}]},{"rn":"VII","lat":41.644611,"lng":41.629402,"items":[{"cardId":7,"title":"ул. В. Горгасали, 110/114","price":"$100 000","area":"58 м²"}]},{"rn":"VIII","lat":41.617223804118424,"lng":41.6392974912861,"items":[{"cardId":8,"title":"ул. Дж. Шартава, 8","price":"$105 000","area":"57 м²"}]},{"rn":"IX","lat":41.6159965,"lng":41.6391506,"items":[{"cardId":9,"title":"ул. Дж. Шартава, 16","price":"$115 000","area":"55 м²"}]}]
+  if (!POINTS.length) return
+
+  const bounds = L.latLngBounds(POINTS.map((p) => [p.lat, p.lng]))
+  const map = L.map(mapEl, {
+    zoomControl: true,
+    scrollWheelZoom: false,
+    dragging: true,
+    tap: true,
+    attributionControl: true,
+  })
+  const isMobile = window.innerWidth < 600
+  map.fitBounds(bounds, { padding: isMobile ? [16, 16] : [40, 40], maxZoom: 14 })
+
+  // Esri Light Gray Canvas — минималистичный серый, точная береговая линия
+  L.tileLayer('https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+    maxZoom: 16,
+    attribution: '© <a href="https://www.esri.com/">Esri</a>, HERE, Garmin, FAO, NOAA, USGS, © <a href="https://www.openstreetmap.org/copyright">OSM contributors</a>',
+  }).addTo(map)
+
+  for (const p of POINTS) {
+    const aria = p.items.map((i) => i.title + ' ' + i.price).join(' · ')
+    const icon = L.divIcon({
+      className: '',
+      html: '<div class="map-pin" tabindex="0" aria-label="' + aria + '">•</div>',
+      iconSize: [36, 36], iconAnchor: [18, 18], popupAnchor: [0, -18],
+    })
+    const marker = L.marker([p.lat, p.lng], { icon, riseOnHover: true }).addTo(map)
+    const popupHtml =
+      p.items.map((it) =>
+        '<div class="pop-row">' +
+          '<div class="pop-title">' + it.title + '</div>' +
+          '<div class="pop-price">' + it.price + ' · ' + it.area + '</div>' +
+          '<a class="pop-link" href="#card-' + it.cardId + '" data-card="' + it.cardId + '">К объекту →</a>' +
+        '</div>'
+      ).join('')
+    marker.bindPopup(popupHtml, { maxWidth: 280, autoPanPadding: [20, 20] })
+  }
+
+  map.on('popupopen', (e) => {
+    const links = e.popup.getElement().querySelectorAll('.pop-link')
+    for (const link of links) {
+      link.addEventListener('click', (ev) => {
+        ev.preventDefault()
+        const id = link.getAttribute('data-card')
+        const target = document.getElementById('card-' + id)
+        if (!target) return
+        map.closePopup()
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        target.classList.remove('flash')
+        void target.offsetWidth
+        target.classList.add('flash')
+      })
+    }
+  })
+})
+</script>
+<script>
+// Мини-карты в карточках: по одной на объект, точка из pin_lat/pin_lng.
+window.addEventListener('load', () => {
+  if (typeof L === 'undefined') return
+  const TILE = 'https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}'
+  document.querySelectorAll('.card-map').forEach((el) => {
+    const lat = parseFloat(el.dataset.lat)
+    const lng = parseFloat(el.dataset.lng)
+    if (!Number.isFinite(lat) || !Number.isFinite(lng)) return
+    const map = L.map(el, {
+      zoomControl: true,        // кнопки +/- для приближения/отдаления
+      scrollWheelZoom: false,   // колёсико не перехватываем — чтобы страница скроллилась
+      dragging: true,           // можно таскать карту
+      doubleClickZoom: true,
+      boxZoom: false, keyboard: false,
+      attributionControl: false,
+      minZoom: 10, maxZoom: 16,
+    })
+    map.setView([lat, lng], 12)  // стартовый масштаб шире — виден контекст вокруг точки
+    L.tileLayer(TILE, { maxZoom: 16 }).addTo(map)
+    const icon = L.divIcon({
+      className: '',
+      html: '<div class="map-pin">•</div>',
+      iconSize: [28, 28], iconAnchor: [14, 14],
+    })
+    L.marker([lat, lng], { icon }).addTo(map)
+  })
+})
+</script>
+</body>
+</html>
