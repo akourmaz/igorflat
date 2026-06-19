@@ -389,15 +389,6 @@
     color: var(--ink);
   }
 
-  .title-row {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 21px;
-    font-weight: 400;
-    font-style: italic;
-    color: var(--ink);
-    line-height: 1.35;
-  }
-
   .block-label {
     font-size: 10px;
     text-transform: uppercase;
@@ -451,10 +442,31 @@
     color: var(--ink-soft);
     margin: 0;
     line-height: 1.7;
-    white-space: pre-wrap;
-    max-height: 220px;
+    max-height: 240px;
     overflow-y: auto;
     font-weight: 400;
+  }
+  .desc-p { margin: 0 0 10px; }
+  .desc-p:last-child { margin-bottom: 0; }
+  .desc-list {
+    margin: 4px 0 12px;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 7px;
+  }
+  .desc-list:last-child { margin-bottom: 0; }
+  .desc-list li {
+    position: relative;
+    padding-left: 18px;
+    line-height: 1.55;
+  }
+  .desc-list li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 11px;
+    width: 9px; height: 1px;
+    background: var(--gold);
   }
   .desc.empty { color: var(--ink-faint); font-style: italic; }
   .desc[data-lang="ka"]::before {
@@ -583,7 +595,7 @@
   <header class="hero">
     <p class="hero-eyebrow">Private Selection</p>
     <h1>Подбор <span class="italic">для Игоря</span></h1>
-    <p class="hero-sub">9 квартир в Батуми · отобрано вручную</p>
+    <p class="hero-sub">8 квартир в Батуми · отобрано вручную</p>
     <p class="lead">Квартиры, готовые к заселению, в рамках вашего бюджета и по критериям, которые вы озвучили.</p>
     
   </header>
@@ -591,37 +603,13 @@
   <section class="cards-section">
     <div class="cards-heading">
       <h2>Отобранные объекты</h2>
-      <span class="count">9 объектов</span>
+      <span class="count">8 объектов</span>
     </div>
     <div class="cards">
       <article class="card" id="card-1">
-    <div class="carousel" data-photos="[&quot;https://static-statements.tnet.ge/uploads/202606/20260606/statements/k3bc9Wn6a2422bc7f858.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202606/20260606/statements/K1DduMC6a242308e871f.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202606/20260606/statements/pynhKYe6a242340da0c0.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202606/20260606/statements/kwHiMjc6a242349be335.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202606/20260606/statements/aPVlCFN6a242395e0fc8.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202606/20260606/statements/zwxwYtp6a2423c89d2c0.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202606/20260606/statements/QBnK9Ix6a2423e57603a.webp&quot;]">
+    <div class="carousel" data-photos="[&quot;images/ss-35844854/1.jpg&quot;,&quot;images/ss-35844854/2.jpg&quot;,&quot;images/ss-35844854/3.jpg&quot;,&quot;images/ss-35844854/4.jpg&quot;,&quot;images/ss-35844854/5.jpg&quot;,&quot;images/ss-35844854/6.jpg&quot;,&quot;images/ss-35844854/7.jpg&quot;,&quot;images/ss-35844854/8.jpg&quot;]">
       <div class="track">
-        <div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202606/20260606/statements/k3bc9Wn6a2422bc7f858.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202606/20260606/statements/K1DduMC6a242308e871f.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202606/20260606/statements/pynhKYe6a242340da0c0.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202606/20260606/statements/kwHiMjc6a242349be335.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202606/20260606/statements/aPVlCFN6a242395e0fc8.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202606/20260606/statements/zwxwYtp6a2423c89d2c0.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202606/20260606/statements/QBnK9Ix6a2423e57603a.webp')"></div>
-      </div>
-      <div class="counter">07 фото</div>
-      <button class="nav prev" aria-label="Назад">‹</button><button class="nav next" aria-label="Вперёд">›</button>
-      <div class="dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
-    </div>
-    <div class="info">
-      <div class="card-head">
-        <div class="price-block">
-          <div class="price">$110 000</div>
-          <div class="price-per-m">1 719 $ / м²</div>
-        </div>
-      </div>
-      <div class="specs-table">
-        <div class="spec-row"><span class="label">Площадь</span><span class="value">64 м²</span></div><div class="spec-row"><span class="label">Этаж</span><span class="value">6 / 15</span></div><div class="spec-row"><span class="label">Комнат</span><span class="value">3</span></div><div class="spec-row"><span class="label">Спален</span><span class="value">2</span></div><div class="spec-row"><span class="label">Район</span><span class="value">Химшиашвили</span></div><div class="spec-row"></div>
-      </div>
-      <div class="title-row">Продается 3 комнатная квартира в батуми</div>
-      <div class="card-map-block"><p class="block-label">Расположение</p><div class="card-map" id="card-map-1" data-lat="41.636712" data-lng="41.611436"></div><p class="card-addr">ул. Ш. Инасаридзе, 8</p></div>
-      
-    </div>
-  </article>
-<article class="card" id="card-2">
-    <div class="carousel" data-photos="[&quot;https://static.ss.ge/20260616/1_1ea0fcc8-07ea-4268-bbd4-ce2f5fd1a970.jpg&quot;,&quot;https://static.ss.ge/20260616/15_ec89ad53-955a-4be2-8d36-f5f6cb407099.jpg&quot;,&quot;https://static.ss.ge/20260616/2_3dff791b-25ef-4d1e-a448-b21fed65e197.jpg&quot;,&quot;https://static.ss.ge/20260616/4_0c8d4ec8-c3b1-4dc7-aaa2-2cbb4304c5b2.jpg&quot;,&quot;https://static.ss.ge/20260616/7_4e70948b-a5fc-41fa-8171-e151726d5e8c.jpg&quot;,&quot;https://static.ss.ge/20260616/7_56d98970-96da-4289-8107-707af9e41824.jpg&quot;,&quot;https://static.ss.ge/20260616/17_4dd97a58-ce39-43b2-a524-5a6d2f5b83e9.jpg&quot;,&quot;https://static.ss.ge/20260616/10_00fc6369-4d10-400d-9278-b65e707d1e01.jpg&quot;]">
-      <div class="track">
-        <div class="slide" style="background-image:url('https://static.ss.ge/20260616/1_1ea0fcc8-07ea-4268-bbd4-ce2f5fd1a970.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20260616/15_ec89ad53-955a-4be2-8d36-f5f6cb407099.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20260616/2_3dff791b-25ef-4d1e-a448-b21fed65e197.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20260616/4_0c8d4ec8-c3b1-4dc7-aaa2-2cbb4304c5b2.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20260616/7_4e70948b-a5fc-41fa-8171-e151726d5e8c.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20260616/7_56d98970-96da-4289-8107-707af9e41824.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20260616/17_4dd97a58-ce39-43b2-a524-5a6d2f5b83e9.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20260616/10_00fc6369-4d10-400d-9278-b65e707d1e01.jpg')"></div>
+        <div class="slide" style="background-image:url('images/ss-35844854/1.jpg')"></div><div class="slide" style="background-image:url('images/ss-35844854/2.jpg')"></div><div class="slide" style="background-image:url('images/ss-35844854/3.jpg')"></div><div class="slide" style="background-image:url('images/ss-35844854/4.jpg')"></div><div class="slide" style="background-image:url('images/ss-35844854/5.jpg')"></div><div class="slide" style="background-image:url('images/ss-35844854/6.jpg')"></div><div class="slide" style="background-image:url('images/ss-35844854/7.jpg')"></div><div class="slide" style="background-image:url('images/ss-35844854/8.jpg')"></div>
       </div>
       <div class="counter">08 фото</div>
       <button class="nav prev" aria-label="Назад">‹</button><button class="nav next" aria-label="Вперёд">›</button>
@@ -630,19 +618,18 @@
     <div class="info">
       <div class="card-head">
         <div class="price-block">
-          <div class="price">$110 000</div>
-          <div class="price-per-m">1 719 $ / м²</div>
+          <div class="price">$112 000</div>
+          <div class="price-per-m">1 750 $ / м²</div>
         </div>
       </div>
       <div class="specs-table">
         <div class="spec-row"><span class="label">Площадь</span><span class="value">64 м²</span></div><div class="spec-row"><span class="label">Этаж</span><span class="value">8 / 28</span></div><div class="spec-row"><span class="label">Спален</span><span class="value">2</span></div><div class="spec-row"><span class="label">Район</span><span class="value">Район аэропорта (Ангиса)</span></div>
       </div>
-      <div class="title-row">Продаётся 3-комнатная квартира в Батуми</div>
-      <div class="card-map-block"><p class="block-label">Расположение</p><div class="card-map" id="card-map-2" data-lat="41.62" data-lng="41.61"></div><p class="card-addr">Ангиса, 3-й переулок, 8 · <span class="approx">расположение примерное</span></p></div>
+      <div class="card-map-block"><p class="block-label">Расположение</p><div class="card-map" id="card-map-1" data-lat="41.62" data-lng="41.61"></div><p class="card-addr">Ангиса, 3-й переулок, 8 · <span class="approx">расположение примерное</span></p></div>
       
     </div>
   </article>
-<article class="card" id="card-3">
+<article class="card" id="card-2">
     <div class="carousel" data-photos="[&quot;https://static-statements.tnet.ge/uploads/202507/20250717/statements/cTJYSEw6878f37ec2992.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202507/20250717/statements/2sDF4gx6878f37eb081d.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202507/20250717/statements/h0qbg016878f37eb4674.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202507/20250717/statements/GvUUKfG6878f37eba6fb.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202507/20250717/statements/KJkl9DZ6878f37e9a5f2.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202507/20250717/statements/l6Xa8ZU6878f37ec1d9e.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202507/20250717/statements/1QVWA236878f37eac469.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202507/20250717/statements/TIuswVz6878f37e96f61.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202507/20250717/statements/qoNZrtV6878f37ebb440.webp&quot;]">
       <div class="track">
         <div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202507/20250717/statements/cTJYSEw6878f37ec2992.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202507/20250717/statements/2sDF4gx6878f37eb081d.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202507/20250717/statements/h0qbg016878f37eb4674.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202507/20250717/statements/GvUUKfG6878f37eba6fb.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202507/20250717/statements/KJkl9DZ6878f37e9a5f2.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202507/20250717/statements/l6Xa8ZU6878f37ec1d9e.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202507/20250717/statements/1QVWA236878f37eac469.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202507/20250717/statements/TIuswVz6878f37e96f61.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202507/20250717/statements/qoNZrtV6878f37ebb440.webp')"></div>
@@ -654,19 +641,18 @@
     <div class="info">
       <div class="card-head">
         <div class="price-block">
-          <div class="price">$95 000</div>
-          <div class="price-per-m">1 583 $ / м²</div>
+          <div class="price">$97 000</div>
+          <div class="price-per-m">1 617 $ / м²</div>
         </div>
       </div>
       <div class="specs-table">
         <div class="spec-row"><span class="label">Площадь</span><span class="value">60 м²</span></div><div class="spec-row"><span class="label">Этаж</span><span class="value">12 / 18</span></div><div class="spec-row"><span class="label">Комнат</span><span class="value">3</span></div><div class="spec-row"><span class="label">Спален</span><span class="value">2</span></div><div class="spec-row"><span class="label">Район</span><span class="value">Химшиашвили</span></div><div class="spec-row"></div>
       </div>
-      <div class="title-row">Продается 3 комнатная квартира в батуми</div>
-      <div class="card-map-block"><p class="block-label">Расположение</p><div class="card-map" id="card-map-3" data-lat="41.633171" data-lng="41.608883"></div><p class="card-addr">ул. Ш. Инасаридзе, 13</p></div>
-      <div class="desc-block"><p class="block-label">Описание</p><p class="desc" data-lang="ru">Срочно продаётся на перекрёстке Инасаридзе и Кобаладзе, рядом с корпусом Next, в корпусе Dodo Pizza — 3-комнатная квартира с 2 изолированными спальнями с естественным освещением. Укомплектована всем необходимым: мебель, техника, центральное отопление и кондиционер — всё остаётся в квартире. Вид на море. Возможен обмен на недвижимость в Тбилиси. Я собственник.</p></div>
+      <div class="card-map-block"><p class="block-label">Расположение</p><div class="card-map" id="card-map-2" data-lat="41.633171" data-lng="41.608883"></div><p class="card-addr">ул. Ш. Инасаридзе, 13</p></div>
+      <div class="desc-block"><p class="block-label">Описание</p><div class="desc" data-lang="ru"><p class="desc-p">Срочно продаётся на перекрёстке Инасаридзе и Кобаладзе, рядом с корпусом Next, в корпусе Dodo Pizza — 3-комнатная квартира с 2 изолированными спальнями с естественным освещением. Укомплектована всем необходимым: мебель, техника, центральное отопление и кондиционер — всё остаётся в квартире. Вид на море. Возможен обмен на недвижимость в Тбилиси.</p></div></div>
     </div>
   </article>
-<article class="card" id="card-4">
+<article class="card" id="card-3">
     <div class="carousel" data-photos="[&quot;https://static-statements.tnet.ge/uploads/202606/20260610/statements/4NjczsK6a291ce3d01b6.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202606/20260610/statements/O3XCXS36a291ce3d2c3b.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202606/20260610/statements/2V7EYCz6a291ce3d2305.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202606/20260610/statements/v4pufQq6a291ce3bee50.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202606/20260610/statements/Z7BwmC16a291ce3cebf9.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202606/20260610/statements/Q9DV5uL6a291ce3cf359.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202606/20260610/statements/gKpi8Or6a291ce3b73ee.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202606/20260610/statements/iFs33BC6a291ce3d2c68.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202606/20260610/statements/X85EFSe6a291ce3d2504.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202606/20260610/statements/FmfkTLs6a291ce3d48df.webp&quot;]">
       <div class="track">
         <div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202606/20260610/statements/4NjczsK6a291ce3d01b6.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202606/20260610/statements/O3XCXS36a291ce3d2c3b.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202606/20260610/statements/2V7EYCz6a291ce3d2305.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202606/20260610/statements/v4pufQq6a291ce3bee50.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202606/20260610/statements/Z7BwmC16a291ce3cebf9.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202606/20260610/statements/Q9DV5uL6a291ce3cf359.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202606/20260610/statements/gKpi8Or6a291ce3b73ee.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202606/20260610/statements/iFs33BC6a291ce3d2c68.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202606/20260610/statements/X85EFSe6a291ce3d2504.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202606/20260610/statements/FmfkTLs6a291ce3d48df.webp')"></div>
@@ -678,19 +664,18 @@
     <div class="info">
       <div class="card-head">
         <div class="price-block">
-          <div class="price">$103 000</div>
-          <div class="price-per-m">1 717 $ / м²</div>
+          <div class="price">$105 000</div>
+          <div class="price-per-m">1 750 $ / м²</div>
         </div>
       </div>
       <div class="specs-table">
         <div class="spec-row"><span class="label">Площадь</span><span class="value">60 м²</span></div><div class="spec-row"><span class="label">Этаж</span><span class="value">3 / 18</span></div><div class="spec-row"><span class="label">Комнат</span><span class="value">3</span></div><div class="spec-row"><span class="label">Спален</span><span class="value">2</span></div><div class="spec-row"><span class="label">Район</span><span class="value">Центр (ул. Горгасали)</span></div><div class="spec-row"></div>
       </div>
-      <div class="title-row">Продается 3 комнатная квартира в батуми</div>
-      <div class="card-map-block"><p class="block-label">Расположение</p><div class="card-map" id="card-map-4" data-lat="41.642805" data-lng="41.624255"></div><p class="card-addr">ул. В. Горгасали, 147</p></div>
-      <div class="desc-block"><p class="block-label">Описание</p><p class="desc" data-lang="ru">Продаётся в Батуми, на перекрёстке Вахтанга Горгасали и Грибоедова, на 3-м этаже. Трёхкомнатная с двумя спальнями, с ремонтом, мебелью, техникой и центральным отоплением.</p></div>
+      <div class="card-map-block"><p class="block-label">Расположение</p><div class="card-map" id="card-map-3" data-lat="41.642805" data-lng="41.624255"></div><p class="card-addr">ул. В. Горгасали, 147</p></div>
+      <div class="desc-block"><p class="block-label">Описание</p><div class="desc" data-lang="ru"><p class="desc-p">Продаётся в Батуми, на перекрёстке Вахтанга Горгасали и Грибоедова, на 3-м этаже. Трёхкомнатная с двумя спальнями, с ремонтом, мебелью, техникой и центральным отоплением.</p></div></div>
     </div>
   </article>
-<article class="card" id="card-5">
+<article class="card" id="card-4">
     <div class="carousel" data-photos="[&quot;https://static.ss.ge/20260103/2_44e38b47-2424-416c-b9b5-59d53fc46a5f.jpg&quot;,&quot;https://static.ss.ge/20260103/18_506c0255-d127-474b-ac57-339d7926916a.jpg&quot;,&quot;https://static.ss.ge/20260103/14_8b3a588d-0564-41a0-b8c8-c1be0a5e4cd1.jpg&quot;,&quot;https://static.ss.ge/20260103/9_75d8236e-3026-4513-ba9d-91f777701d25.jpg&quot;,&quot;https://static.ss.ge/20260103/3_e6c995c9-9cd9-4cb7-8969-14d279adb9d0.jpg&quot;,&quot;https://static.ss.ge/20260103/13_94fed976-5d04-49fe-8d8f-0f185f57efa6.jpg&quot;,&quot;https://static.ss.ge/20260103/10_32000506-d61a-4977-8e70-629b426078c1.jpg&quot;,&quot;https://static.ss.ge/20260103/7_708861fd-f2b3-41e0-a14d-c73557019764.jpg&quot;]">
       <div class="track">
         <div class="slide" style="background-image:url('https://static.ss.ge/20260103/2_44e38b47-2424-416c-b9b5-59d53fc46a5f.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20260103/18_506c0255-d127-474b-ac57-339d7926916a.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20260103/14_8b3a588d-0564-41a0-b8c8-c1be0a5e4cd1.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20260103/9_75d8236e-3026-4513-ba9d-91f777701d25.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20260103/3_e6c995c9-9cd9-4cb7-8969-14d279adb9d0.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20260103/13_94fed976-5d04-49fe-8d8f-0f185f57efa6.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20260103/10_32000506-d61a-4977-8e70-629b426078c1.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20260103/7_708861fd-f2b3-41e0-a14d-c73557019764.jpg')"></div>
@@ -702,19 +687,18 @@
     <div class="info">
       <div class="card-head">
         <div class="price-block">
-          <div class="price">$95 000</div>
-          <div class="price-per-m">1 583 $ / м²</div>
+          <div class="price">$97 000</div>
+          <div class="price-per-m">1 617 $ / м²</div>
         </div>
       </div>
       <div class="specs-table">
         <div class="spec-row"><span class="label">Площадь</span><span class="value">60 м²</span></div><div class="spec-row"><span class="label">Этаж</span><span class="value">12 / 18</span></div><div class="spec-row"><span class="label">Спален</span><span class="value">2</span></div><div class="spec-row"><span class="label">Район</span><span class="value">Химшиашвили</span></div>
       </div>
-      <div class="title-row">Продаётся 3-комнатная квартира в Батуми</div>
-      <div class="card-map-block"><p class="block-label">Расположение</p><div class="card-map" id="card-map-5" data-lat="41.611053" data-lng="41.6351056"></div><p class="card-addr">ул. Ш. Инасаридзе, 13</p></div>
-      <div class="desc-block"><p class="block-label">Описание</p><p class="desc" data-lang="ru">Срочно продается 3-комнатная квартира рядом с домом Next на перекрестке Инсарадзе и Кобаладзе, в здании Dodo Pizza, с 2 изолированными спальнями с естественным освещением. Квартира оснащена всем необходимым инвентарем, мебелью, техникой, центральным отоплением и кондиционером, которые остаются в квартире с видом на море. Возможен обмен на недвижимость в Тбилиси! Я владелец.</p></div>
+      <div class="card-map-block"><p class="block-label">Расположение</p><div class="card-map" id="card-map-4" data-lat="41.611053" data-lng="41.6351056"></div><p class="card-addr">ул. Ш. Инасаридзе, 13</p></div>
+      <div class="desc-block"><p class="block-label">Описание</p><div class="desc" data-lang="ru"><p class="desc-p">Срочно продается 3-комнатная квартира рядом с домом Next на перекрестке Инсарадзе и Кобаладзе, в здании Dodo Pizza, с 2 изолированными спальнями с естественным освещением. Квартира оснащена всем необходимым инвентарем, мебелью, техникой, центральным отоплением и кондиционером, которые остаются в квартире с видом на море. Возможен обмен на недвижимость в Тбилиси!</p></div></div>
     </div>
   </article>
-<article class="card" id="card-6">
+<article class="card" id="card-5">
     <div class="carousel" data-photos="[&quot;https://static-statements.tnet.ge/uploads/202603/20260315/statements/1HulMV169b6a71750d22.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202605/20260528/statements/PQAqoGD6a17de65bdacf.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202603/20260308/statements/fwGWkiZ69ad8e877e3ef.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202603/20260308/statements/JytmafQ69ad8eb4c526b.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202603/20260308/statements/t4UBuOX69ad8e8779ecd.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202603/20260308/statements/b6OC7h769ad8e8738c15.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202603/20260308/statements/KVjIa4C69ad8e6e0ff75.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202603/20260308/statements/fdtANaB69ad8e6e1c042.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202603/20260308/statements/x0gEWr069ad8e877b77d.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202603/20260308/statements/8XWNDQb69ad8eb4c687b.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202603/20260308/statements/d1tspWi69ad8eb4d2bd1.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202603/20260308/statements/kcc4iYJ69ad8eefcf15b.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202603/20260308/statements/fsva25z69ad8f84d82b7.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202605/20260528/statements/l9ir5j26a17de65bef79.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202605/20260528/statements/xwRhTZ06a17de65c0aa6.webp&quot;]">
       <div class="track">
         <div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202603/20260315/statements/1HulMV169b6a71750d22.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202605/20260528/statements/PQAqoGD6a17de65bdacf.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202603/20260308/statements/fwGWkiZ69ad8e877e3ef.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202603/20260308/statements/JytmafQ69ad8eb4c526b.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202603/20260308/statements/t4UBuOX69ad8e8779ecd.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202603/20260308/statements/b6OC7h769ad8e8738c15.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202603/20260308/statements/KVjIa4C69ad8e6e0ff75.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202603/20260308/statements/fdtANaB69ad8e6e1c042.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202603/20260308/statements/x0gEWr069ad8e877b77d.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202603/20260308/statements/8XWNDQb69ad8eb4c687b.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202603/20260308/statements/d1tspWi69ad8eb4d2bd1.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202603/20260308/statements/kcc4iYJ69ad8eefcf15b.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202603/20260308/statements/fsva25z69ad8f84d82b7.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202605/20260528/statements/l9ir5j26a17de65bef79.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202605/20260528/statements/xwRhTZ06a17de65c0aa6.webp')"></div>
@@ -726,19 +710,18 @@
     <div class="info">
       <div class="card-head">
         <div class="price-block">
-          <div class="price">$115 000</div>
-          <div class="price-per-m">1 949 $ / м²</div>
+          <div class="price">$117 500</div>
+          <div class="price-per-m">1 992 $ / м²</div>
         </div>
       </div>
       <div class="specs-table">
         <div class="spec-row"><span class="label">Площадь</span><span class="value">59 м²</span></div><div class="spec-row"><span class="label">Этаж</span><span class="value">18 / 25</span></div><div class="spec-row"><span class="label">Комнат</span><span class="value">3</span></div><div class="spec-row"><span class="label">Спален</span><span class="value">2</span></div><div class="spec-row"><span class="label">Район</span><span class="value">Новый бульвар (Orbi Beach Tower)</span></div><div class="spec-row"></div>
       </div>
-      <div class="title-row">Продается 3 комнатная квартира в батуми</div>
-      <div class="card-map-block"><p class="block-label">Расположение</p><div class="card-map" id="card-map-6" data-lat="41.630116" data-lng="41.602101"></div><p class="card-addr">ул. Ш. Химшиашвили, 57</p></div>
-      <div class="desc-block"><p class="block-label">Описание</p><p class="desc" data-lang="ru">Срочно, со скидкой. Прямой панорамный вид на море и набережную. В одном из центральных мест города, у въезда на Новый бульвар, в башне Orbi Beach Tower. 2 светлые спальни, с мебелью и техникой.</p></div>
+      <div class="card-map-block"><p class="block-label">Расположение</p><div class="card-map" id="card-map-5" data-lat="41.630116" data-lng="41.602101"></div><p class="card-addr">ул. Ш. Химшиашвили, 57</p></div>
+      <div class="desc-block"><p class="block-label">Описание</p><div class="desc" data-lang="ru"><p class="desc-p">Срочно, со скидкой. Прямой панорамный вид на море и набережную. В одном из центральных мест города, у въезда на Новый бульвар, в башне Orbi Beach Tower. 2 светлые спальни, с мебелью и техникой.</p></div></div>
     </div>
   </article>
-<article class="card" id="card-7">
+<article class="card" id="card-6">
     <div class="carousel" data-photos="[&quot;https://static-statements.tnet.ge/uploads/202503/20250320/statements/ZEL6ovW67dc3cf9cec08.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202503/20250320/statements/FDUdqk367dc3cfa6c140.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202503/20250320/statements/dY3NoM267dc3cfa71a7e.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202503/20250320/statements/M5wVOEL67dc3cfa79ab2.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202503/20250320/statements/5SCFH5067dc3dc059815.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202503/20250320/statements/lb74u5K67dc3dc1e1f97.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202503/20250320/statements/ALs4x0P67dc3dc2265f4.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202503/20250320/statements/KS2E6Z467dc3dc279c1c.webp&quot;,&quot;https://static-statements.tnet.ge/uploads/202503/20250320/statements/jdVsVFY67dc3dc299bc7.webp&quot;]">
       <div class="track">
         <div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202503/20250320/statements/ZEL6ovW67dc3cf9cec08.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202503/20250320/statements/FDUdqk367dc3cfa6c140.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202503/20250320/statements/dY3NoM267dc3cfa71a7e.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202503/20250320/statements/M5wVOEL67dc3cfa79ab2.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202503/20250320/statements/5SCFH5067dc3dc059815.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202503/20250320/statements/lb74u5K67dc3dc1e1f97.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202503/20250320/statements/ALs4x0P67dc3dc2265f4.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202503/20250320/statements/KS2E6Z467dc3dc279c1c.webp')"></div><div class="slide" style="background-image:url('https://static-statements.tnet.ge/uploads/202503/20250320/statements/jdVsVFY67dc3dc299bc7.webp')"></div>
@@ -750,19 +733,18 @@
     <div class="info">
       <div class="card-head">
         <div class="price-block">
-          <div class="price">$100 000</div>
-          <div class="price-per-m">1 724 $ / м²</div>
+          <div class="price">$102 000</div>
+          <div class="price-per-m">1 759 $ / м²</div>
         </div>
       </div>
       <div class="specs-table">
         <div class="spec-row"><span class="label">Площадь</span><span class="value">58 м²</span></div><div class="spec-row"><span class="label">Этаж</span><span class="value">13 / 13</span></div><div class="spec-row"><span class="label">Комнат</span><span class="value">3</span></div><div class="spec-row"><span class="label">Спален</span><span class="value">2</span></div><div class="spec-row"><span class="label">Район</span><span class="value">Центр (ул. Горгасали)</span></div><div class="spec-row"></div>
       </div>
-      <div class="title-row">Продается 3 комнатная квартира в батуми</div>
-      <div class="card-map-block"><p class="block-label">Расположение</p><div class="card-map" id="card-map-7" data-lat="41.644611" data-lng="41.629402"></div><p class="card-addr">ул. В. Горгасали, 110/114</p></div>
-      <div class="desc-block"><p class="block-label">Описание</p><p class="desc" data-lang="ru">Квартира в новостройке в Батуми, очень близко к морю, с большой верандой и красивыми видами. Улица Вахтанга Горгасали 110/114, 13-й (последний) этаж. Всё готово для проживания, мебель остаётся. Последний этаж — есть перспектива надстройки.</p></div>
+      <div class="card-map-block"><p class="block-label">Расположение</p><div class="card-map" id="card-map-6" data-lat="41.644611" data-lng="41.629402"></div><p class="card-addr">ул. В. Горгасали, 110/114</p></div>
+      <div class="desc-block"><p class="block-label">Описание</p><div class="desc" data-lang="ru"><p class="desc-p">Квартира в новостройке в Батуми, очень близко к морю, с большой верандой и красивыми видами. Улица Вахтанга Горгасали 110/114, 13-й (последний) этаж. Всё готово для проживания, мебель остаётся. Последний этаж — есть перспектива надстройки.</p></div></div>
     </div>
   </article>
-<article class="card" id="card-8">
+<article class="card" id="card-7">
     <div class="carousel" data-photos="[&quot;https://static.ss.ge/20260406/1_0279f37d-ef8f-4d5c-aab3-9e6862620823.jpg&quot;,&quot;https://static.ss.ge/20260406/5_84d78d2c-0869-4db8-a814-7407071ad99c.jpg&quot;,&quot;https://static.ss.ge/20260406/1_83b12f15-00aa-4420-a7bd-95d0ca854e53.jpg&quot;,&quot;https://static.ss.ge/20260406/2_a093918d-4410-4c9f-b1a7-015f5b7f469b.jpg&quot;,&quot;https://static.ss.ge/20260406/2_856d6203-88de-4215-865b-308d5edcde2b.jpg&quot;,&quot;https://static.ss.ge/20260406/15_8706a4e8-f4ed-4139-9d6e-948c8317ca2f.jpg&quot;,&quot;https://static.ss.ge/20260406/11_c85576f0-3625-4826-95d7-8dba9018dda0.jpg&quot;,&quot;https://static.ss.ge/20260406/7_557adc53-0af3-41b2-bec7-635150220b12.jpg&quot;,&quot;https://static.ss.ge/20260406/9_f724e58a-dbb2-493c-a1c3-b871280788ba.jpg&quot;,&quot;https://static.ss.ge/20260406/1_4ce70c19-ea2e-4531-bb70-b8334f9502fe.jpg&quot;,&quot;https://static.ss.ge/20260406/12_60ba99ad-9c87-44e4-b87c-75eebbd3c67a.jpg&quot;,&quot;https://static.ss.ge/20260406/15_0ff05c96-b375-4504-b470-30a9ae5abd22.jpg&quot;,&quot;https://static.ss.ge/20260406/10_99b0af12-ff71-4522-ba33-2b89bdab922b.jpg&quot;,&quot;https://static.ss.ge/20260406/8_a5fe24a4-736e-407d-bf19-bf479af1cd88.jpg&quot;]">
       <div class="track">
         <div class="slide" style="background-image:url('https://static.ss.ge/20260406/1_0279f37d-ef8f-4d5c-aab3-9e6862620823.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20260406/5_84d78d2c-0869-4db8-a814-7407071ad99c.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20260406/1_83b12f15-00aa-4420-a7bd-95d0ca854e53.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20260406/2_a093918d-4410-4c9f-b1a7-015f5b7f469b.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20260406/2_856d6203-88de-4215-865b-308d5edcde2b.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20260406/15_8706a4e8-f4ed-4139-9d6e-948c8317ca2f.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20260406/11_c85576f0-3625-4826-95d7-8dba9018dda0.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20260406/7_557adc53-0af3-41b2-bec7-635150220b12.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20260406/9_f724e58a-dbb2-493c-a1c3-b871280788ba.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20260406/1_4ce70c19-ea2e-4531-bb70-b8334f9502fe.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20260406/12_60ba99ad-9c87-44e4-b87c-75eebbd3c67a.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20260406/15_0ff05c96-b375-4504-b470-30a9ae5abd22.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20260406/10_99b0af12-ff71-4522-ba33-2b89bdab922b.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20260406/8_a5fe24a4-736e-407d-bf19-bf479af1cd88.jpg')"></div>
@@ -774,25 +756,18 @@
     <div class="info">
       <div class="card-head">
         <div class="price-block">
-          <div class="price">$105 000</div>
-          <div class="price-per-m">1 842 $ / м²</div>
+          <div class="price">$107 000</div>
+          <div class="price-per-m">1 877 $ / м²</div>
         </div>
       </div>
       <div class="specs-table">
         <div class="spec-row"><span class="label">Площадь</span><span class="value">57 м²</span></div><div class="spec-row"><span class="label">Этаж</span><span class="value">18 / 35</span></div><div class="spec-row"><span class="label">Спален</span><span class="value">2</span></div><div class="spec-row"><span class="label">Район</span><span class="value">Посёлок Тамар</span></div>
       </div>
-      <div class="title-row">Продаётся 3-комнатная квартира в Батуми</div>
-      <div class="card-map-block"><p class="block-label">Расположение</p><div class="card-map" id="card-map-8" data-lat="41.617223804118424" data-lng="41.6392974912861"></div><p class="card-addr">ул. Дж. Шартава, 8</p></div>
-      <div class="desc-block"><p class="block-label">Описание</p><p class="desc" data-lang="ru">▪️ ул. Шартава, 8
-▪️ Общая площадь — 57 м², 2+1
-▪️ 18-й этаж
-▪️ балкон
-▪️ новый качественный ремонт. Квартира полностью оборудована и обставлена мебелью
-▪️ две отдельные спальни, вторая спальня без окна («Это комната для идеального сна — здесь нет лишнего шума и света с улицы, а мягкую циркуляцию воздуха обеспечивает аккуратное вентиляционное окно»).
-▪️ WhatsApp</p></div>
+      <div class="card-map-block"><p class="block-label">Расположение</p><div class="card-map" id="card-map-7" data-lat="41.617223804118424" data-lng="41.6392974912861"></div><p class="card-addr">ул. Дж. Шартава, 8</p></div>
+      <div class="desc-block"><p class="block-label">Описание</p><div class="desc" data-lang="ru"><ul class="desc-list"><li>ул. Шартава, 8</li><li>Общая площадь — 57 м², 2+1</li><li>18-й этаж</li><li>балкон</li><li>новый качественный ремонт. Квартира полностью оборудована и обставлена мебелью</li><li>две отдельные спальни, вторая спальня без окна («Это комната для идеального сна — здесь нет лишнего шума и света с улицы, а мягкую циркуляцию воздуха обеспечивает аккуратное вентиляционное окно»).</li></ul></div></div>
     </div>
   </article>
-<article class="card" id="card-9">
+<article class="card" id="card-8">
     <div class="carousel" data-photos="[&quot;https://static.ss.ge/20250905/10_1045a993-1a90-40fd-a6aa-db3020e7ec78.jpg&quot;,&quot;https://static.ss.ge/20250905/3_4ceb9881-5efe-475a-b35e-5fe33bfce666.jpg&quot;,&quot;https://static.ss.ge/20250905/8_660f5e06-4149-49dc-a7cb-107560ebd7b8.jpg&quot;,&quot;https://static.ss.ge/20250905/2_b6c761a4-12f7-4666-9b03-1df0dee0b082.jpg&quot;,&quot;https://static.ss.ge/20250905/3_68e25459-aa70-4cff-9121-568f4c9a8b3d.jpg&quot;,&quot;https://static.ss.ge/20250905/8_c0749850-a20f-4470-9b84-eff09169f38a.jpg&quot;,&quot;https://static.ss.ge/20250905/0_b3457fe6-b58d-42f7-a769-b54b4944b4fc.jpg&quot;,&quot;https://static.ss.ge/20250905/13_f3aa8712-ea15-4ca1-bb27-be59003fd1ce.jpg&quot;,&quot;https://static.ss.ge/20250905/0_c5d1944f-90ca-4c0c-bd6e-368b5bed424c.jpg&quot;]">
       <div class="track">
         <div class="slide" style="background-image:url('https://static.ss.ge/20250905/10_1045a993-1a90-40fd-a6aa-db3020e7ec78.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20250905/3_4ceb9881-5efe-475a-b35e-5fe33bfce666.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20250905/8_660f5e06-4149-49dc-a7cb-107560ebd7b8.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20250905/2_b6c761a4-12f7-4666-9b03-1df0dee0b082.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20250905/3_68e25459-aa70-4cff-9121-568f4c9a8b3d.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20250905/8_c0749850-a20f-4470-9b84-eff09169f38a.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20250905/0_b3457fe6-b58d-42f7-a769-b54b4944b4fc.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20250905/13_f3aa8712-ea15-4ca1-bb27-be59003fd1ce.jpg')"></div><div class="slide" style="background-image:url('https://static.ss.ge/20250905/0_c5d1944f-90ca-4c0c-bd6e-368b5bed424c.jpg')"></div>
@@ -804,29 +779,15 @@
     <div class="info">
       <div class="card-head">
         <div class="price-block">
-          <div class="price">$115 000</div>
-          <div class="price-per-m">2 091 $ / м²</div>
+          <div class="price">$117 500</div>
+          <div class="price-per-m">2 136 $ / м²</div>
         </div>
       </div>
       <div class="specs-table">
         <div class="spec-row"><span class="label">Площадь</span><span class="value">55 м²</span></div><div class="spec-row"><span class="label">Этаж</span><span class="value">35 / 39</span></div><div class="spec-row"><span class="label">Спален</span><span class="value">2</span></div><div class="spec-row"><span class="label">Район</span><span class="value">Химшиашвили</span></div>
       </div>
-      <div class="title-row">Продаётся 3-комнатная квартира в Батуми</div>
-      <div class="card-map-block"><p class="block-label">Расположение</p><div class="card-map" id="card-map-9" data-lat="41.6159965" data-lng="41.6391506"></div><p class="card-addr">ул. Дж. Шартава, 16</p></div>
-      <div class="desc-block"><p class="block-label">Описание</p><p class="desc" data-lang="ru">#Продажа квартиры в Батуми
-
-Бульвар Шартава 7
-2+1
-Вид на МОРЕ и на Аллею Героев
-✔️ ДВЕ отдельная спальни
-✔️ Посудомоечная машина
-✔️ Духовка
-✔️ Большой холодильник
-✔️ Стиральная машина
-✔️ Сушильная машина
-
-💵 115000 долл
-(WhatsApp)</p></div>
+      <div class="card-map-block"><p class="block-label">Расположение</p><div class="card-map" id="card-map-8" data-lat="41.6159965" data-lng="41.6391506"></div><p class="card-addr">ул. Дж. Шартава, 16</p></div>
+      <div class="desc-block"><p class="block-label">Описание</p><div class="desc" data-lang="ru"><p class="desc-p">Продажа квартиры в Батуми</p><p class="desc-p">Бульвар Шартава 7</p><p class="desc-p">2+1</p><p class="desc-p">Вид на МОРЕ и на Аллею Героев</p><ul class="desc-list"><li>ДВЕ отдельная спальни</li><li>Посудомоечная машина</li><li>Духовка</li><li>Большой холодильник</li><li>Стиральная машина</li><li>Сушильная машина</li></ul></div></div>
     </div>
   </article>
     </div>
@@ -835,7 +796,7 @@
   <section class="map-section">
   <div class="map-header">
     <h2 class="map-title">Все объекты подборки на карте Батуми</h2>
-    <div class="map-meta">9 точек · по адресам объявлений</div>
+    <div class="map-meta">8 точек · по адресам объявлений</div>
   </div>
   <div id="map" class="map-canvas" role="img" aria-label="Карта объектов подбора"></div>
   <p class="map-note">Точки расставлены по адресам и координатам из объявлений. Где точной геометки нет — расположение указано примерно по улице. Точный подъезд и этаж уточняются с продавцом перед показом.</p>
@@ -954,7 +915,7 @@ window.addEventListener('load', () => {
   const mapEl = document.getElementById('map')
   if (!mapEl) return
 
-  const POINTS = [{"rn":"I","lat":41.636712,"lng":41.611436,"items":[{"cardId":1,"title":"ул. Ш. Инасаридзе, 8","price":"$110 000","area":"64 м²"}]},{"rn":"II","lat":41.62,"lng":41.61,"items":[{"cardId":2,"title":"Ангиса, 3-й переулок, 8","price":"$110 000","area":"64 м²"}]},{"rn":"III","lat":41.633171,"lng":41.608883,"items":[{"cardId":3,"title":"ул. Ш. Инасаридзе, 13","price":"$95 000","area":"60 м²"}]},{"rn":"IV","lat":41.642805,"lng":41.624255,"items":[{"cardId":4,"title":"ул. В. Горгасали, 147","price":"$103 000","area":"60 м²"}]},{"rn":"V","lat":41.611053,"lng":41.6351056,"items":[{"cardId":5,"title":"ул. Ш. Инасаридзе, 13","price":"$95 000","area":"60 м²"}]},{"rn":"VI","lat":41.630116,"lng":41.602101,"items":[{"cardId":6,"title":"ул. Ш. Химшиашвили, 57","price":"$115 000","area":"59 м²"}]},{"rn":"VII","lat":41.644611,"lng":41.629402,"items":[{"cardId":7,"title":"ул. В. Горгасали, 110/114","price":"$100 000","area":"58 м²"}]},{"rn":"VIII","lat":41.617223804118424,"lng":41.6392974912861,"items":[{"cardId":8,"title":"ул. Дж. Шартава, 8","price":"$105 000","area":"57 м²"}]},{"rn":"IX","lat":41.6159965,"lng":41.6391506,"items":[{"cardId":9,"title":"ул. Дж. Шартава, 16","price":"$115 000","area":"55 м²"}]}]
+  const POINTS = [{"rn":"I","lat":41.62,"lng":41.61,"items":[{"cardId":1,"title":"Ангиса, 3-й переулок, 8","price":"$112 000","area":"64 м²"}]},{"rn":"II","lat":41.633171,"lng":41.608883,"items":[{"cardId":2,"title":"ул. Ш. Инасаридзе, 13","price":"$97 000","area":"60 м²"}]},{"rn":"III","lat":41.642805,"lng":41.624255,"items":[{"cardId":3,"title":"ул. В. Горгасали, 147","price":"$105 000","area":"60 м²"}]},{"rn":"IV","lat":41.611053,"lng":41.6351056,"items":[{"cardId":4,"title":"ул. Ш. Инасаридзе, 13","price":"$97 000","area":"60 м²"}]},{"rn":"V","lat":41.630116,"lng":41.602101,"items":[{"cardId":5,"title":"ул. Ш. Химшиашвили, 57","price":"$117 500","area":"59 м²"}]},{"rn":"VI","lat":41.644611,"lng":41.629402,"items":[{"cardId":6,"title":"ул. В. Горгасали, 110/114","price":"$102 000","area":"58 м²"}]},{"rn":"VII","lat":41.617223804118424,"lng":41.6392974912861,"items":[{"cardId":7,"title":"ул. Дж. Шартава, 8","price":"$107 000","area":"57 м²"}]},{"rn":"VIII","lat":41.6159965,"lng":41.6391506,"items":[{"cardId":8,"title":"ул. Дж. Шартава, 16","price":"$117 500","area":"55 м²"}]}]
   if (!POINTS.length) return
 
   const bounds = L.latLngBounds(POINTS.map((p) => [p.lat, p.lng]))
